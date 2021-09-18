@@ -1,0 +1,1 @@
+{"properties": [{"name": "Details", "folder_reference": false, "base_value": "Add info here", "appears": true, "type": "ProperScrolledText"}, {"name": "Project Path", "folder_reference": true, "base_value": "", "appears": false, "type": "ProperScrolledText"}], "name": "basic_programa", "states": {"finished_program": {"md_builder": true}}}
