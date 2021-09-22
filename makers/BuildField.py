@@ -1,5 +1,6 @@
 import tkinter as tk
 
+import makers.BuildProperty
 from interface_classes import InterfaceHelper
 import Main
 from component_configuration import input_options
@@ -11,7 +12,7 @@ def make_build_field(scroll, owner, type, groups=[],data={}):
     scroll.add_component(field)
 
     for key in data.keys():
-        field._set_data(key, data[key])
+        field.set_data(key, data[key])
 
     for array in groups:
         array.append(field)
@@ -20,6 +21,7 @@ def make_build_field(scroll, owner, type, groups=[],data={}):
 
 def make_builder_field_with_single_owner(scroll_owner, type,groups=[],data={}):
     return make_build_field(scroll_owner,scroll_owner,type,groups,data)
+
 
 # holds the components a field has (name,base value,etc)
 class BuilderField(InterfaceHelper.LineFrame):
@@ -40,12 +42,31 @@ class BuilderField(InterfaceHelper.LineFrame):
         for use_input in use_inputs:
 
             self.make_input(use_input)
-        delete_button = tk.Button(self, text="delete", command=self._remove)
+        delete_button = tk.Button(self, text="delete", command=self.remove)
         self.add_component(delete_button)
         self.define_footer_component(delete_button)
 
-    i=0
-    def _remove(self):
+        test_field_button = tk.Button(self, text="test", command=self.test)
+        self.add_component(test_field_button)
+
+        for i in range(5):
+            r_button = tk.Button(self)
+            r_button.grid(row=self._row+1, column=i)
+            self.define_footer_component(r_button)
+
+
+    def test(self):
+        pr = makers.BuildProperty.make_property_input(self, self.get())
+
+        self.master.master.add_component(pr)
+
+        delete_button = tk.Button(pr, text="delete", command=pr.destroy)
+
+        pr.add_component(delete_button)
+
+    i = 0
+
+    def remove(self):
 
         self.i -= 1
         self.scroll_frame.remove_field(self)
@@ -60,12 +81,11 @@ class BuilderField(InterfaceHelper.LineFrame):
         v["type"] = self.inp_type
         return v
 
-
     def set(self, data):
         for k in data.keys():
-            self._set_data(k, data[k])
+            self.set_data(k, data[k])
 
-    def _set_data(self,data_name,data):
+    def set_data(self, data_name, data):
         if data_name == "type":
             return
 
@@ -87,12 +107,8 @@ class BuilderField(InterfaceHelper.LineFrame):
         name = input_data["build_field"]["name"]
         if name in self.values.keys():
             return
-        inp_type = input_data["build_field"]["type"]
 
-        type = inp_type
-        from makers import ProjectMaker
-
-        inp = ProjectMaker.PropertyInput(self, input_data["build_field"])
+        inp = makers.BuildProperty.PropertyInput(self, input_data["build_field"])
         self.inputs[name] = inp
         self.values[name] = inp
         self.add_component(inp)

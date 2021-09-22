@@ -1,41 +1,48 @@
 import tkinter as tk
-from tkinter import filedialog
 
-from interface_classes import InterfaceHelper
 import os
-
+from . import BuildProperty
 from builder_helper.builders.builder_help import BuildElement
 from tkinter import *
-from PIL import Image, ImageTk
-from interface_classes.InterfaceHelper import FolderChooseButton
+from makers.BuildProperty import PropertyInput
 from makers.BuilderElements import Maker
+
 
 class ProjectMaker(Maker):
     def __init__(self, main, parent, data, template=None):
+        self.start_buttons(main, parent)
         super().__init__(main, parent, 1000)
+
         self.main = main
         self.properties = {}
 
-
         self._row += 1
+        self.make_name_property()
+
+        self.start_loading(data, template)
+
+        self.call_processes = tk.BooleanVar()
+        self.processes_check_button(main)
+
+    def make_name_property(self):
         pr = PropertyInput(self, {'type': "ProperScrolledText", 'name': "Archive Name",
-                                              'base_value':""})
+                                  'base_value': ""})
         self.add_component(pr)
+        self.properties["name"] = pr
 
-        self.properties["path_name"] = pr
-
-
+    def start_loading(self, data, template):
         if template:
             self.template = template["name"]
             self._use_template(template)
         if data:
             self.load_data(data)
 
-        self.call_processes = tk.BooleanVar()
+    def processes_check_button(self, main):
         self.call_processes.set(True)
-        processes_check = tk.Checkbutton(self, text="call processes")
+        processes_check = tk.Checkbutton(main, text="call processes")
         processes_check.config(variable=self.call_processes)
-        self.add_component(processes_check)
+        main.add_component(processes_check)
+        self.destroy_children.append(processes_check)
 
     def save_data(self):
         data = {}
@@ -43,9 +50,15 @@ class ProjectMaker(Maker):
         data["properties"] = values
         data["template"] = self.template
 
-        data["name"] = values['path_name']
+        data["name"] = values['name']
         self.main.loader.save_data(data, BuildElement.PROJECT)
 
+        self.save_process(data)
+
+        if self.call_processes.get():
+            self.call_automated_processes(data)
+
+    def save_process(self, data):
         from builder_helper.builders import builder_data
         from builder_helper.builders import builder_help
 
@@ -53,13 +66,10 @@ class ProjectMaker(Maker):
         builder_help.update_archive(data['template'],
                                     BuildElement.TEMPLATE,
                                     "on_delete",
-                                    {"method" : 'remove_archive',
+                                    {"method": 'remove_archive',
                                      "name": data["name"],
-                                     "control" : BuildElement.PROJECT.to_string()}
+                                     "control": BuildElement.PROJECT.to_string()}
                                     , "append")
-
-        if self.call_processes.get():
-            self.call_automated_processes(data)
 
     def load_data(self, data):
         self.template = data["template"]
@@ -69,39 +79,27 @@ class ProjectMaker(Maker):
 
     def _use_template(self,template):
         self._add_properties(template)
+        self.load_states(template)
+
+    def load_states(self, template):
+        if 'states' not in template:
+            return
 
         template_states = list(template["states"])
-        in_value = ""
-        if not len(template_states) == 0:
-            in_value = template_states[0]
-            self.string_state = tk.StringVar(self, in_value)
-            self.state_option = OptionMenu(self, self.string_state,*template_states)
-            self.state_option.grid(row=1)
-        
+
+        if len(template_states) == 0:
+            return
+
+        in_value = template_states[0]
+        self.string_state = tk.StringVar(self, in_value)
+        self.state_option = OptionMenu(self, self.string_state, *template_states)
+        self.state_option.grid(row=1)
+
     def _add_properties(self,temp):
-        for property in temp["properties"]:
-            pr = PropertyInput(self, property)
+        for property_data in temp["properties"]:
+            pr = BuildProperty.make_property_input(self, property_data)
             self.add_component(pr)
-            self.properties[property["name"]] = pr
-            print(property)
-            self.make_folder_button(property,pr)
-            self.make_file_button(property,pr)
-
-    def make_folder_button(self, property,input):
-        if 'folder_reference' not in property: return
-        if not property['folder_reference']: return
-        self.make_choose_button(input, "directory")
-
-    def make_file_button(self, property, input):
-        if 'file_reference' not in property: return
-        if not property['file_reference']: return
-        self.make_choose_button(input, "file")
-
-    def make_choose_button(self, input, method):
-        choose_folder_button = FolderChooseButton(self, text=f"choose {method}", width=15)
-        choose_folder_button.connect(input, method)
-        self.add_component(choose_folder_button, -1)
-
+            self.properties[property_data["name"]] = pr
 
     def get_property_values(self):
         values = {}
@@ -112,14 +110,18 @@ class ProjectMaker(Maker):
     def call_automated_processes(self, data):
 
         try:
-            getattr(self,'string_state')
+            getattr(self, 'string_state')
         except:
             return
+        state_name = self.string_state.get()
 
         loader = self.main.loader
-        f = loader.load_data(data["template"], BuildElement.TEMPLATE)
+        template = loader.load_data(data["template"], BuildElement.TEMPLATE)
 
-        all_requirements = f["states"][self.string_state.get()]
+        if state_name not in template["states"]:
+            return
+
+        all_requirements = template["states"][state_name]
         all_processes = []
         for requirement in all_requirements:
             d = loader.load_data(requirement, BuildElement.REQUIREMENTS)
@@ -129,77 +131,3 @@ class ProjectMaker(Maker):
             os.system(process_path)
 
 
-class PropertyInput(InterfaceHelper.LineFrame):
-    def __init__(self,m,data, dict={}):
-        super().__init__(m)
-        self.p = None
-        d_type = data["type"]
-        self.d_type = d_type
-
-        if d_type == "ProperScrolledText":
-            self.add_component(tk.Label(self, text=data["name"]))
-            self.p = InterfaceHelper.ProperScrolledText(self, height=10)
-            self.add_component(self.p)
-        if d_type == "Checkbutton":
-            c = tk.Checkbutton(self,text=data["name"])
-            self.add_component(c)
-
-            self.p = tk.BooleanVar()
-            c.config(variable=self.p, text=data["name"])
-        if d_type == "OptionMenu":
-            self.add_component(tk.Label(self, text=data["name"]))
-            option_string = tk.StringVar()
-            options = data["options"]
-            if not len(options) == 0:
-                option_string.set(options[0])
-                options = tk.OptionMenu(self, option_string,options[0], *options[1:])
-                self.add_component(options)
-                self.p = option_string
-        if d_type == "OptionList":
-            self.add_component(tk.Label(self,text=data["name"]))
-            options_listing = InterfaceHelper.OptionList(self)
-            self.add_component(options_listing)
-            self.p = options_listing
-
-
-        if d_type == "image":
-            self.p = tk.Label(self)
-            self.add_component(self.p)
-
-            self.path = None
-            self.add_component(tk.Button(self,command=self.choose_image,width=40))
-
-
-
-        if "base_value" in data:
-            self.set(data["base_value"])
-
-
-
-    def choose_image(self,path=None):
-        if path is None:
-            path = filedialog.askopenfilename()
-        load = Image.open(path)
-        self.path=path
-        render = ImageTk.PhotoImage(load)
-        self.p.config(image=render)
-
-    def set(self, value):
-        d_type = self.d_type
-
-        if d_type == "image":
-            self.choose_image(value)
-        else:
-            self.p.set(value)
-
-    def get(self):
-        res = None
-
-        d_type = self.d_type
-
-        if d_type == "image":
-            res = self.path
-        else:
-            res = self.p.get()
-
-        return res

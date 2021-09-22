@@ -1,7 +1,7 @@
 from interface_classes import InterfaceHelper
 import tkinter as tk
 from tkinter import ttk
-import BuildField
+from makers import BuildField
 from builder_helper.builders.builder_help import BuildElement
 
 import component_configuration
@@ -12,15 +12,22 @@ from makers.BuilderElements import Maker
 configuration = None
 class TemplateMaker(Maker):
     def __init__(self, main: InterfaceHelper.ApplicationFrame, parent, template_data = None):
-        super().__init__(main, parent, 1000)
+        self.start_buttons(main, parent)
+
+        template_label = tk.Label(main, text="template name")
+        main.add_component(template_label)
+        self.destroy_children.append(template_label)
+        self.name = InterfaceHelper.ProperScrolledText(main, height=3)
+        main.add_component(self.name)
+        self.destroy_children.append(self.name)
+        self.exe_path_list = AutomatedProcessList(main, main, self)
+        main.add_component(self.exe_path_list, -1, 1)
+        self.destroy_children.append(self.exe_path_list)
+
+        super().__init__(main, parent, 1000, 400)
 
         self.main = main
-        self.exe_path_list = AutomatedProcessList(main,self, self)
-        self.add_component(self.exe_path_list)
 
-        self.add_component(tk.Label(self, text="template name"))
-        self.name = InterfaceHelper.ProperScrolledText(self, height=3)
-        self.add_component(self.name)
 
         self.data_list = InterfaceHelper.LineFrame(self)
         self.add_component(self.data_list)
@@ -65,7 +72,7 @@ class TemplateMaker(Maker):
     def load_data(self,data):
         states = data['states']
         for state in states.keys():
-            state_frame = self.exe_path_list._add_state(state)
+            state_frame = self.exe_path_list.add_state(state)
 
             for process in states[state]:
                 p_frame = state_frame.processes[process]
@@ -76,8 +83,6 @@ class TemplateMaker(Maker):
         self.name.set(data["name"])
         for v in data["properties"]:
             d = self._add_data(v["type"], v)
-
-
 
     def _remove_process(self,path):
         self.added_processes.remove(path)
@@ -125,7 +130,6 @@ class TemplateMaker(Maker):
         for c in data["components"]:
             self._add_component(c)
 
-
     def _add_component(self,c):
 
         for t in c["supported_types"].keys():
@@ -149,12 +153,13 @@ class TemplateMaker(Maker):
         t = self.opts.get()
         return self._add_data(t)
 
+
 class AutomatedProcessList(InterfaceHelper.LineFrame):
 
     def __init__(self, main, m, scroll_frame):
         super(AutomatedProcessList, self).__init__(m)
         add_state_button = tk.Button(self, text="add state", width=30,
-                  command=self._add_state)
+                                     command=self.add_state)
         self.main = main
         self.add_component(add_state_button)
 
@@ -170,7 +175,7 @@ class AutomatedProcessList(InterfaceHelper.LineFrame):
         self.string_state.trace("r", self.change_state_v)
         self.state_box = None
 
-    def _add_state(self,name=None):
+    def add_state(self, name=None):
         if not name:
             name = self.new_state_name.get()
 

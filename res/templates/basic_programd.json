@@ -1,1 +1,0 @@
-{"properties": [{"name": "Details", "folder_reference": false, "base_value": "Add info here", "appears": true, "type": "ProperScrolledText"}, {"name": "Project Path", "folder_reference": true, "base_value": "", "appears": false, "type": "ProperScrolledText"}], "name": "basic_programd", "states": {"finished_program": {"C:/Users/user/PycharmProjects/md_builder": true}}}

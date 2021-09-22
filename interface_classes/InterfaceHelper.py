@@ -1,6 +1,8 @@
+import os
 import tkinter
 import tkinter as tk
 from functools import partial
+from pathlib import Path
 from tkinter import filedialog, scrolledtext
 from interface_classes import InterfaceStyle
 
@@ -24,10 +26,7 @@ class LineFrame(tk.Frame):
 
     def __init__(self,m,cnf={}, **kw):
         super(LineFrame,self).__init__(m,cnf, **kw)
-        self.updaters = []
-        self.global_pdx = 0
-        self.next_pdx = 0
-        self.footer_components = []
+        self.clean_up()
         self.needs_update = False
 
     def _get_row(self):
@@ -36,6 +35,14 @@ class LineFrame(tk.Frame):
 
     def define_updater(self,to_update):
         self.updaters.append(to_update)
+
+    def clean_up(self):
+        self._row = 0
+        self.updaters = []
+        self.add_component_listeners = []
+        self.global_pdx = 0
+        self.next_pdx = 0
+        self.footer_components = []
 
     def define_footer_component(self,component,column=0, end=True):
         component_data = {'component':component,'column':column}
@@ -48,11 +55,11 @@ class LineFrame(tk.Frame):
         if not self.needs_update: return False
 
         self.needs_update = False
-        self._added_component()
+        self.added_component()
 
         return True
 
-    def _added_component(self):
+    def added_component(self):
         for component in self.footer_components:
             component['component'].grid_forget()
             component['component'].grid(row=self.row,column=component['column'])
@@ -61,15 +68,14 @@ class LineFrame(tk.Frame):
 
         if not updaters: return True
         for upd in updaters:
-            upd._added_component()
+            upd.added_component()
 
-    def remove_component(self,comp):
+    def remove_component(self, comp):
         comp.grid_forget()
         self.needs_update = True
         self.after(10, self._update_components)
 
-
-    def add_component(self,comp,row_change=0,column_change=0):
+    def add_component(self, comp, row_change=0, column_change=0):
         actual_row = self.row + row_change
         pdx = self.global_pdx + self.next_pdx
 
@@ -79,49 +85,82 @@ class LineFrame(tk.Frame):
         self.needs_update = True
         self.after(10, self._update_components)
 
+        for to_update in self.add_component_listeners:
+            to_update(comp)
+
+
 
     row = property(_get_row)
 
 
 class ScrolledFrame(LineFrame):
 
-
-    def destroy(self):
-        super().destroy()
-        self.frame.destroy()
-
     def __init__(self, f, w=800, h=500, two_dimensions=False):
         self.frame = tk.Frame(f)
         frame = self.frame
-        frame.grid()
+        try:
+            getattr(self, "destroy_children")
+        except:
+            self.destroy_children = []
+        f.add_component(frame)
         self.scroll_canvas = tk.Canvas(frame)
 
         self.scroll_canvas.grid()
 
         LineFrame.__init__(self, self.scroll_canvas, bg='#8ed49f', bd=2)
+        self.create_scrollbar(frame, two_dimensions)
+
+        self.change_size(w, h)
+
+    def create_vbar(self, frame):
         vbar = tk.Scrollbar(frame, orient=tk.VERTICAL)
         vbar.grid(row=0, column=1, sticky='ns')
         vbar.config(command=self.scroll_canvas.yview)
-
-        if two_dimensions:
-            hbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL)
-            hbar.grid(row=0, column=1, sticky='e')
-            hbar.config(command=self.scroll_canvas.xview)
-
         self.scroll_canvas.config(yscrollcommand=vbar.set)
 
-        self.change_size(w,h)
+    def create_hbar(self, frame):
+        hbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL)
+        hbar.grid(row=0, column=0, sticky='sew')
+        hbar.config(command=self.scroll_canvas.xview)
+        self.scroll_canvas.config(xscrollcommand=hbar.set)
+
+    def create_scrollbar(self, frame, two_dimensions):
+        self.create_vbar(frame)
+        if two_dimensions:
+            self.create_hbar(frame)
+
+
+    def destroy(self):
+        super().destroy()
+        self.frame.destroy()
+
+        for child in self.destroy_children:
+            child.destroy()
 
     def change_color(self,color):
         self.scroll_canvas.config(bg=color)
+
     def change_size(self,w,h):
         self.scroll_canvas.config(width=w, height=h)
 
-    def _added_component(self):
-        super()._added_component()
+    def added_component(self):
+        super().added_component()
         self.scroll_canvas.create_window((0, 0), window=self, anchor=tk.NW)
         self.update_idletasks()
         self.scroll_canvas.config(scrollregion=self.scroll_canvas.bbox("all"))
+
+
+class HorizontalScrolledFrame(ScrolledFrame):
+
+    def create_scrollbar(self, frame, two_dimensions):
+        self.create_hbar(frame)
+
+        if two_dimensions:
+            self.create_vbar(frame)
+
+    def add_component(self, comp, row_change=0, column_change=0):
+        super().add_component(comp, row_change - self._row, column_change+self._row)
+
 
 
 class Option(LineFrame):
@@ -175,9 +214,9 @@ class ChildFrame():
 
     # Parent must define a "start_behaviour" method
     def define_relationship(self,main,main_widget,parent):
-        self.back_button = tk.Button(main_widget, text="go back", command= partial(parent.start_behaviour,main,self))
-
-        main_widget.add_component(self.back_button)
+        self.back_button = tk.Button(main, text="go back", command= partial(parent.start_behaviour,main,self))
+        main.add_component(self.back_button)
+        main_widget.destroy_children.append(self.back_button)
 
         from interface_classes import InterfaceStyle
         InterfaceStyle.colored_button_style.apply_configurations(self.back_button)
@@ -216,8 +255,33 @@ class ProperScrolledText(scrolledtext.ScrolledText):
         self.insert(tk.END,new_text)
 
 
-class ApplicationFrame(tk.Frame):
+class ApplicationFrame(LineFrame):
     def __init__(self,m):
         super().__init__(m)
 
         self.loader = None
+
+
+class ArchiveSelector(LineFrame):
+    def __init__(self, m, file_path):
+        super().__init__(m)
+
+        self.global_pdx = 90
+        self.path = file_path
+        path_without_suffix = Path(file_path).with_suffix('')
+
+        self.clean_filename = os.path.basename(path_without_suffix)
+
+        select_label = tkinter.Label(self, text=f"Select {self.clean_filename}")
+        self.add_component(select_label)
+        InterfaceStyle.use_style(select_label)
+        self.select_button = tkinter.Button(self, text='select', width=30, bd=8,
+                                            bg="#99ff99")
+        self.add_component(self.select_button)
+        InterfaceStyle.standard_button_style.apply_configurations(self.select_button)
+
+    def select(self):
+        pass
+
+    def on_delete(self):
+        pass

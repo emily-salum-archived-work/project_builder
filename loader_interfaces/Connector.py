@@ -26,7 +26,7 @@ class Connector(InterfaceHelper.LineFrame):
 
     def finish_connection(self):
         for input_id in self.inputs:
-            builder_data._update_main_data(input_id, self.inputs[input_id].get())
+            builder_data.update_main_data(input_id, self.inputs[input_id].get())
         Main.initialize_application(self.master)
         self.destroy()
 

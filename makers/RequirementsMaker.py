@@ -3,23 +3,39 @@ from interface_classes import InterfaceHelper
 from tkinter import ttk
 import tkinter as tk
 from builder_helper.builders.builder_help import BuildElement
-import BuildField
+from makers import BuildField
 from makers.BuilderElements import Maker
 import Main
 
 class RequirementsMaker(Maker):
 
     def __init__(self, main, parent, data=None):
+
+        self.start_buttons(main, parent)
+
+        process_label = tk.Label(main, text="process name")
+        main.add_component(process_label)
+        self.destroy_children.append(process_label)
+
+        self.name = InterfaceHelper.ProperScrolledText(main, width=20, height=4)
+        main.add_component(self.name)
+        self.destroy_children.append(self.name)
+
+        path_label = tk.Label(main, text="path to program")
+        main.add_component(path_label)
+        self.destroy_children.append(path_label)
+
+
+        self.program_path = InterfaceHelper.ProperScrolledText(main, width=20, height=4)
+        main.add_component(self.program_path)
+        self.destroy_children.append(self.program_path)
+
         super().__init__(main, parent, 1000)
+
+
         self.loaded = not data == None
         self.grid()
         self.main = main
-        self.add_component(tk.Label(self, text="process name"))
-        self.name = InterfaceHelper.ProperScrolledText(self, width=20, height=4)
-        self.add_component(self.name)
-        self.add_component(tk.Label(self, text="path to program"))
-        self.program_path = InterfaceHelper.ProperScrolledText(self, width=20, height=4)
-        self.add_component(self.program_path)
 
         self.program_path_button = InterfaceHelper.FolderChooseButton(self, width=20, text="program folder")
         self.add_component(self.program_path_button)
@@ -98,14 +114,14 @@ class RequirementsMaker(Maker):
         for f in data["fields"]:
             field = self._add_new_field()
             for v in f.keys():
-                field._set_data(v, f[v])
+                field.set_data(v, f[v])
 
         for f in data["components"]:
             component = self._add_new_component()
             component.load_properties(f)
 
     def _add_new_field(self):
-        new_field = BuildField.make_build_field(self,self.fields_frame,self.opts.get(),
+        new_field = BuildField.make_build_field(self, self.fields_frame, self.opts.get(),
                                                 [self.reqs["fields"]])
         new_field.define_updater(self.fields_frame)
         return new_field
@@ -179,7 +195,7 @@ class Property(InterfaceHelper.LineFrame):
         if self.build_field:
             self.build_field.grid_forget()
         self.build_field = BuildField.make_builder_field_with_single_owner(self,
-                                                                   self.var_type.get())
+                                                                           self.var_type.get())
 
         self.properties['build_field'] = self.build_field
 

@@ -11,7 +11,7 @@ sys.path.insert(0, "..")
 from builder_helper.builders import builder_data
 # noinspection PyUnresolvedReferences
 from builder_helper import LoadMethodOptions
-import builder_choosing
+import BuilderChoosing
 current_module = __import__(__name__)
 
 
@@ -34,13 +34,13 @@ def find_exe_in_folder(folder_path):
                 return exe_in_path
     return None
 
+
 def initialize_application(main_canvas):
 
     load_method = builder_data.get_from_main_data("load_method")
 
     # noinspection PyUnresolvedReferences
     from builder_helper.builders import builder_help
-
 
     if not load_method:
         from InterfaceChooseMethod import InterfaceChooseMethod
@@ -58,7 +58,7 @@ def initialize_application(main_canvas):
         return
 
     main_canvas.loader = loader
-    builder_choosing.start_behaviour(main_canvas)
+    BuilderChoosing.start_behaviour(main_canvas)
 
 
 if __name__ == "__main__":
