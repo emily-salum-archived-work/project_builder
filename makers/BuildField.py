@@ -49,16 +49,22 @@ class BuilderField(InterfaceHelper.LineFrame):
         test_field_button = tk.Button(self, text="test", command=self.test)
         self.add_component(test_field_button)
 
-        for i in range(5):
-            r_button = tk.Button(self)
-            r_button.grid(row=self._row+1, column=i)
-            self.define_footer_component(r_button)
+        self.make_space_button()
 
+    def make_space_button(self):
+        r_button = tk.Button(self, text="                               ")
+        r_button.config(height=1)
+        r_button["state"] = tk.DISABLED
+        r_button.grid(row=self._row + 1)
+        self.define_footer_component(r_button)
 
     def test(self):
         pr = makers.BuildProperty.make_property_input(self, self.get())
 
-        self.master.master.add_component(pr)
+        try:
+            self.master.master.add_component(pr, 1,1)
+        except AttributeError:
+            self.master.add_component(pr, 1,1)
 
         delete_button = tk.Button(pr, text="delete", command=pr.destroy)
 

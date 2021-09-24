@@ -12,6 +12,9 @@ class RequirementsMaker(Maker):
     def __init__(self, main, parent, data=None):
 
         self.start_buttons(main, parent)
+        super().__init__(main, parent, 1000)
+        self.loaded = not data == None
+        self.main = main
 
         process_label = tk.Label(main, text="process name")
         main.add_component(process_label)
@@ -25,33 +28,27 @@ class RequirementsMaker(Maker):
         main.add_component(path_label)
         self.destroy_children.append(path_label)
 
-
         self.program_path = InterfaceHelper.ProperScrolledText(main, width=20, height=4)
         main.add_component(self.program_path)
         self.destroy_children.append(self.program_path)
 
-        super().__init__(main, parent, 1000)
+        self.program_path_button = InterfaceHelper.FolderChooseButton(main, width=20, text="program folder")
+        main.add_component(self.program_path_button,-1)
+        self.destroy_children.append(self.program_path_button)
 
-
-        self.loaded = not data == None
-        self.grid()
-        self.main = main
-
-        self.program_path_button = InterfaceHelper.FolderChooseButton(self, width=20, text="program folder")
-        self.add_component(self.program_path_button)
         self.program_path_button.connect(self.program_path)
 
-        self.exe_path = InterfaceHelper.ProperScrolledText(self, width=20, height=4)
-        self.add_component(self.exe_path)
+        self.exe_path = InterfaceHelper.ProperScrolledText(main, width=20, height=4)
+        main.add_component(self.exe_path)
 
-        self.exe_path_button = InterfaceHelper.FolderChooseButton(self, width=20, text="get path to exe")
-        self.add_component(self.exe_path_button)
+        self.exe_path_button = InterfaceHelper.FolderChooseButton(main, width=20, text="get path to exe")
+        main.add_component(self.exe_path_button)
         self.exe_path_button.connect(self.exe_path, "file")
 
-        self.exe_auto_button = tk.Button(self, text = "attempt to auto-find", command=self.search_exe)
-        self.add_component(self.exe_auto_button)
+        self.exe_auto_button = tk.Button(main, text = "attempt to auto-find", command=self.search_exe)
+        main.add_component(self.exe_auto_button)
 
-        self.fields_frame = InterfaceHelper.ScrolledFrame(self,600,400)
+        self.fields_frame = InterfaceHelper.HorizontalScrolledFrame(self, 600, 400, True)
         self.fields_frame.define_updater(self)
         self.add_component(self.fields_frame)
 

@@ -11,6 +11,7 @@ class Maker(ABC, InterfaceHelper.HorizontalScrolledFrame, InterfaceHelper.ChildF
 
     def start_buttons(self, main, parent):
         self.destroy_children = []
+        main
         self.define_relationship(main, self, parent)
         button = tkinter.Button(main, text="upload", width=15, command=self.save_data)
         main.add_component(button)

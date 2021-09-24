@@ -30,6 +30,7 @@ def make_choose_button(input, method):
     input.add_component(choose_folder_button, -1)
 
 
+
 class PropertyInput(InterfaceHelper.LineFrame):
     def __init__(self, m, data, dict={}):
         super().__init__(m)
@@ -37,30 +38,7 @@ class PropertyInput(InterfaceHelper.LineFrame):
         d_type = data["type"]
         self.d_type = d_type
 
-        if d_type == "ProperScrolledText":
-            self.add_component(tk.Label(self, text=data["name"]))
-            self.p = InterfaceHelper.ProperScrolledText(self, height=10)
-            self.add_component(self.p)
-        if d_type == "Checkbutton":
-            c = tk.Checkbutton(self,text=data["name"])
-            self.add_component(c)
-
-            self.p = tk.BooleanVar()
-            c.config(variable=self.p, text=data["name"])
-        if d_type == "OptionMenu":
-            self.add_component(tk.Label(self, text=data["name"]))
-            option_string = tk.StringVar()
-            options = data["options"]
-            if not len(options) == 0:
-                option_string.set(options[0])
-                options = tk.OptionMenu(self, option_string,options[0], *options[1:])
-                self.add_component(options)
-                self.p = option_string
-        if d_type == "OptionList":
-            self.add_component(tk.Label(self,text=data["name"]))
-            options_listing = InterfaceHelper.OptionList(self)
-            self.add_component(options_listing)
-            self.p = options_listing
+        self.input_makers[d_type](self, data)
 
         if "base_value" in data:
             self.set(data["base_value"])
@@ -71,3 +49,42 @@ class PropertyInput(InterfaceHelper.LineFrame):
     def get(self):
         res = self.p.get()
         return res
+
+    def make_text_name(self, name):
+        text = tk.Label(self, text=name)
+        self.add_component(text)
+
+    def make_text_input(self, data):
+        self.make_text_name(data['name'])
+        self.p = InterfaceHelper.ProperScrolledText(self, height=10)
+        self.add_component(self.p)
+
+    def make_check_button(self, data):
+        c = tk.Checkbutton(self, text=data["name"])
+        self.add_component(c)
+
+        self.p = tk.BooleanVar()
+        c.config(variable=self.p, text=data["name"])
+
+    def make_option_menu(self, data):
+        self.make_text_name(data['name'])
+        option_string = tk.StringVar()
+        options = data["options"]
+        if not len(options) == 0:
+            option_string.set(options[0])
+            options = tk.OptionMenu(self, option_string, options[0], *options[1:])
+            self.add_component(options)
+            self.p = option_string
+
+    def make_option_list(self, data):
+        self.make_text_name(data['name'])
+        options_listing = InterfaceHelper.OptionList(self)
+        self.add_component(options_listing)
+        self.p = options_listing
+
+    input_makers = {
+        "ProperScrolledText": make_text_input,
+        "Checkbutton": make_check_button,
+        "OptionMenu": make_option_menu,
+        "OptionList": make_option_list
+    }

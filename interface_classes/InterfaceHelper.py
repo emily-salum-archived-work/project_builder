@@ -59,6 +59,9 @@ class LineFrame(tk.Frame):
 
         return True
 
+    def added_c(self, c):
+        self.added_component()
+
     def added_component(self):
         for component in self.footer_components:
             component['component'].grid_forget()
@@ -80,6 +83,12 @@ class LineFrame(tk.Frame):
         pdx = self.global_pdx + self.next_pdx
 
         comp.grid(row=actual_row, column=column_change,padx = pdx)
+
+        try:
+            s = getattr(comp, 'add_component_listeners')
+            s.append(self.added_c)
+        except:
+            pass
 
         self.next_pdx = 0
         self.needs_update = True
@@ -111,6 +120,8 @@ class ScrolledFrame(LineFrame):
         self.create_scrollbar(frame, two_dimensions)
 
         self.change_size(w, h)
+
+        Expander(self.master.master, self.scroll_canvas, 3)
 
     def create_vbar(self, frame):
         vbar = tk.Scrollbar(frame, orient=tk.VERTICAL)
@@ -222,17 +233,92 @@ class ChildFrame():
         InterfaceStyle.colored_button_style.apply_configurations(self.back_button)
 
 
+# Allows user to modify the height size of an element
+class Expander:
+    # master -> where to add expander elements
+    # controller -> who to expand
+    # row_change -> what row the element should be added in
+    # divider -> how much to divide expander position to change the
+    # height of the element (for some reason that I yet do not understand,
+    # frames work perfectly with the position while text inputs need to divide
+    # the position by about... 22. Other than that it seems to be consistent,
+    # so when adding it to another element just test out the value I guess)
+    def __init__(self, master, controller, row_change=0, divider=1):
+        self.master = master
+        self.init_b = False
+        self.controller = controller
+        self.divider = divider
+        self.move_listening = []
+        self.grip = tk.Label(master, bitmap="gray25")
+        self.grip.bind("<ButtonPress-1>", self.start_move)
+        self.grip.bind("<B1-Motion>", self.do_move)
+
+        self.grip.bind("<ButtonRelease-1>", self.stop_move)
+
+        try:
+            self.master.add_component(self.grip,row_change)
+        except:
+            self.grip.grid(row=row_change)
+
+    def stop_move(self, _event):
+        self.grip.place_forget()
+        try:
+            self.master.added_component()
+        except:
+            pass
+        self.grip.place(x=self.inplace_grip.winfo_x(), y=self.inplace_grip.winfo_y())
+
+    def init_behaviour(self):
+        self.init_b = True
+        grip_place_grid =  self.grip.grid_info()['row']
+        self.grip.grid_forget()
+
+        self.inplace_grip = tk.Label(self.master, bitmap="gray12")
+        self.inplace_grip.grid(row=grip_place_grid)
+
+    def start_move(self, event):
+
+        self.grip.x = self.grip.winfo_rootx()
+        self.grip.y = event.y
+
+        if not self.init_b:
+            self.init_behaviour()
+
+        self.grip.tkraise()
+
+        self.do_move(event)
+
+    def do_move(self, event):
+        deltay = event.y - self.grip.y
+
+        y = self.grip.winfo_y() + deltay
+
+        if y < self.controller.winfo_y() + self.controller.winfo_height()*60/100:
+            y = self.controller.winfo_y()+ self.controller.winfo_height()*60/100
+
+        self.controller.config(height=(self.grip.winfo_y()-
+                                       self.controller.winfo_y())/self.divider)
+
+        self.grip.place(x=self.inplace_grip.winfo_x(), y=y)
+
+        for lis in self.move_listening:
+            lis()
+
+
 class ProperScrolledText(scrolledtext.ScrolledText):
-    def __init__(self,m, specifications = None, cnf={},**kw):
+    def __init__(self,m, specifications=None, cnf={}, **kw):
         if not 'width' in cnf:
             cnf['width'] = 15
             cnf['height'] = 5
-
         super(scrolledtext.ScrolledText,self).__init__(m,cnf,**kw)
         InterfaceStyle.simple_entry_style.apply_configurations(self)
-        self.inicialize_specifications(specifications)
+        self.initialize_specifications(specifications)
+        exp = Expander(m, self, 2, 22)
 
-    def inicialize_specifications(self, specifications):
+        if getattr(self.master, "added_component"):
+            exp.move_listening.append(self.master.added_component)
+
+    def initialize_specifications(self, specifications):
         if not specifications:
             return
 

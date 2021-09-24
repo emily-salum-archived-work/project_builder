@@ -4,33 +4,18 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/interface_classes/InterfaceHelper.py" line="180" />
+    <bookmark url="file://$PROJECT_DIR$/interface_classes/InterfaceHelper.py" line="191" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fd777c7-7024-4d30-9938-39fce8a38e48" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/makers/BuildProperty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BuildField.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/BuildField.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/builder_choosing.py" beforeDir="false" afterPath="$PROJECT_DIR$/BuilderChoosing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/data.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interface_classes/InterfaceHelper.py" beforeDir="false" afterPath="$PROJECT_DIR$/interface_classes/InterfaceHelper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loader_interfaces/Connector.py" beforeDir="false" afterPath="$PROJECT_DIR$/loader_interfaces/Connector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makers/BuildField.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/BuildField.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makers/BuildProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/BuildProperty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/makers/BuilderElements.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/BuilderElements.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makers/ProjectMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/ProjectMaker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/makers/RequirementsMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/RequirementsMaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makers/TemplateMaker.py" beforeDir="false" afterPath="$PROJECT_DIR$/makers/TemplateMaker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/projects/no.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/projects/nonono.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/reqs/cq.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/reqs/sa.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/reqs/wgeewgwe.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/templates/basic_programa.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/templates/basic_programb.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/templates/basic_programb].json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/templates/basic_programc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/templates/basic_programd.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/template_choosing.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemplateChoosing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/templates/45764ef2968b79b1262b9cb0f45b1e27bc6e935e26f4b6.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,44 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/BuilderChoosing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="110" column="42" lean-forward="true" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
-              <folding>
-                <element signature="e#0#20#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TemplateChoosing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#61#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoadMethods.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="46" column="20" lean-forward="true" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interface_classes/InterfaceHelper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
+            <state relative-caret-position="-15">
+              <caret line="49" column="13" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -89,19 +41,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../builder_helper/LoadMethodOptions.py">
+        <entry file="file://$PROJECT_DIR$/makers/BuildField.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-108">
-              <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-351">
-              <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+            <state relative-caret-position="228">
+              <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -109,13 +52,49 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/makers/ProjectMaker.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/MongoDBConnection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+            <state relative-caret-position="104">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="891">
+              <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/makers/ProjectMaker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2358">
+              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/makers/TemplateMaker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/makers/RequirementsMaker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-216">
-              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state relative-caret-position="270">
+              <caret line="120" column="39" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
               </folding>
@@ -136,8 +115,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/makers/BuilderElements.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="228">
+              <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -148,10 +127,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/makers/BuildProperty.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+            <state relative-caret-position="226">
+              <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/FileConnection.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="47">
+              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -212,26 +203,26 @@
         <option value="$PROJECT_DIR$/loader_interfaces/DatabaseConnector.py" />
         <option value="$PROJECT_DIR$/../builder_helper/loaders/LoadMethodOptions.py" />
         <option value="$PROJECT_DIR$/InterfaceChooseMethod.py" />
-        <option value="$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/MongoDBConnection.py" />
         <option value="$PROJECT_DIR$/venv/Lib/site-packages/pymongo/common.py" />
         <option value="$PROJECT_DIR$/builder_choosing.py" />
         <option value="$PROJECT_DIR$/template_choosing.py" />
         <option value="$PROJECT_DIR$/../builder_helper/builders/cypher.py" />
-        <option value="$PROJECT_DIR$/makers/BuildProperty.py" />
         <option value="$PROJECT_DIR$/makers/TemplateMaker.py" />
-        <option value="$PROJECT_DIR$/makers/RequirementsMaker.py" />
-        <option value="$PROJECT_DIR$/makers/BuildField.py" />
         <option value="$PROJECT_DIR$/data.json" />
         <option value="$PROJECT_DIR$/loader_interfaces/Connector.py" />
         <option value="$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/FileConnection.py" />
         <option value="$PROJECT_DIR$/../builder_helper/loaders/LoadMethods.py" />
-        <option value="$PROJECT_DIR$/makers/BuilderElements.py" />
         <option value="$PROJECT_DIR$/../builder_helper/LoadMethodOptions.py" />
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/TemplateChoosing.py" />
-        <option value="$PROJECT_DIR$/interface_classes/InterfaceHelper.py" />
         <option value="$PROJECT_DIR$/BuilderChoosing.py" />
         <option value="$PROJECT_DIR$/makers/ProjectMaker.py" />
+        <option value="$PROJECT_DIR$/interface_classes/InterfaceHelper.py" />
+        <option value="$PROJECT_DIR$/makers/BuildProperty.py" />
+        <option value="$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/MongoDBConnection.py" />
+        <option value="$PROJECT_DIR$/makers/RequirementsMaker.py" />
+        <option value="$PROJECT_DIR$/makers/BuildField.py" />
+        <option value="$PROJECT_DIR$/makers/BuilderElements.py" />
       </list>
     </option>
   </component>
@@ -257,13 +248,17 @@
             <path>
               <item name="project_builder" type="b2602c69:ProjectViewProjectNode" />
               <item name="project_builder" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="interface_classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="project_builder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_builder" type="462c0819:PsiDirectoryNode" />
+              <item name="makers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project_builder" type="b2602c69:ProjectViewProjectNode" />
               <item name="project_builder" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="projects" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="project_builder" type="b2602c69:ProjectViewProjectNode" />
@@ -456,7 +451,7 @@
       <window_info anchor="bottom" id="Inspection Results" order="0" weight="0.3289689" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49925596" weight="0.16366611" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49925596" weight="0.46317512" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.36006546" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -591,16 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/MongoDBConnection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="81" column="37" lean-forward="true" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/collection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82242">
@@ -649,16 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/makers/TemplateMaker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5076">
-          <caret line="197" column="22" lean-forward="true" selection-start-line="197" selection-start-column="22" selection-end-line="197" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/templates/45764ef2968b79b1262b9cb0f45b1e27bc6e935e26f4b6.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -670,16 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="99819">
           <caret line="3697" column="8" selection-start-line="3697" selection-start-column="8" selection-end-line="3697" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/makers/BuildField.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -707,70 +672,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/FileConnection.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="51" column="35" lean-forward="true" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoadMethods.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="46" column="20" lean-forward="true" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/makers/BuildProperty.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/makers/BuilderElements.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="2223" column="8" selection-start-line="2223" selection-start-column="8" selection-end-line="2223" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../builder_helper/LoadMethodOptions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-351">
-          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TemplateChoosing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="81">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
@@ -778,20 +682,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/interface_classes/InterfaceHelper.py">
+    <entry file="file://$PROJECT_DIR$/../builder_helper/LoadMethodOptions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="282" column="21" selection-start-line="282" selection-start-column="21" selection-end-line="282" selection-end-column="21" />
+        <state relative-caret-position="243">
+          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoadMethods.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1242">
+          <caret line="46" column="20" selection-start-line="46" selection-start-column="20" selection-end-line="46" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuilderChoosing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2673">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60129">
+          <caret line="2230" column="8" selection-start-line="2230" selection-start-column="8" selection-end-line="2230" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="891">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makers/BuildProperty.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="82" column="13" selection-start-line="82" selection-start-column="13" selection-end-line="82" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/FileConnection.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BuilderChoosing.py">
+    <entry file="file://$PROJECT_DIR$/../builder_helper/loaders/LoaderClasses/MongoDBConnection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="110" column="42" lean-forward="true" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
+        <state relative-caret-position="104">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makers/BuildField.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="68" column="39" selection-start-line="68" selection-start-column="39" selection-end-line="68" selection-end-column="39" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
@@ -800,8 +765,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/makers/RequirementsMaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216">
-          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        <state relative-caret-position="270">
+          <caret line="120" column="39" selection-start-line="120" selection-start-column="39" selection-end-line="120" selection-end-column="39" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
           </folding>
@@ -810,10 +775,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/makers/ProjectMaker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+        <state relative-caret-position="2358">
+          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makers/TemplateMaker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="14" column="21" lean-forward="true" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makers/BuilderElements.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="13" column="12" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interface_classes/InterfaceHelper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-15">
+          <caret line="49" column="13" lean-forward="true" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
