@@ -19,10 +19,12 @@ Connecting different helper projects of mine that used similar data.
 
 ## Related projects
 
+
 Below, the list of projects that either used its functionaliy or planned to at some point:
 
 - [portfolio_builder](https://github.com/emilymarquessalum/portfolio-builder)
 - [md_builder](https://github.com/emilymarquessalum/md_builder)
+- [github_init](https://github.com/emilymarquessalum/github_init)
 
 ## State
 
